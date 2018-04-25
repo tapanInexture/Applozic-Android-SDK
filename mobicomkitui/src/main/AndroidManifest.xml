@@ -3,4 +3,5 @@
     package="com.applozic.mobicomkit.uiwidgets">
 
 
+    <uses-permission android:name="android.permission.VIBRATE" />
 </manifest>
