@@ -2,7 +2,7 @@
 <resources>
     <!-- the theme applied to the application or activity -->
 
-    <style name="MobiComAppBaseTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="MobiComAppBaseTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="android:actionBarStyle">@style/ApplozicActionBar</item>
         <item name="actionBarStyle">@style/ApplozicActionBar</item>
         <!-- Set AppCompat’s color theming attrs -->

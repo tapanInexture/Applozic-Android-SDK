@@ -80,7 +80,7 @@ public class MobiComQuickConversationFragment extends Fragment implements Search
     private Long minCreatedAtTime;
     private DownloadConversation downloadConversation;
     private BaseContactService baseContactService;
-    private Toolbar toolbar;
+    //private Toolbar toolbar;
     private MessageDatabaseService messageDatabaseService;
     private int visibleThreshold = 5;
     private int currentPage = 0;
@@ -147,8 +147,12 @@ public class MobiComQuickConversationFragment extends Fragment implements Search
         recyclerView.addItemDecoration(dividerItemDecoration);
         recyclerView.setAdapter(recyclerAdapter);
         //recyclerView.addItemDecoration(new FooterItemDecoration(getContext(), recyclerView, R.layout.mobicom_message_list_header_footer));
+
+/*
         toolbar = (Toolbar) getActivity().findViewById(R.id.my_toolbar);
         toolbar.setClickable(false);
+       */
+
         fabButton = (ImageButton) list.findViewById(R.id.fab_start_new);
         loading = true;
         LinearLayout individualMessageSendLayout = (LinearLayout) list.findViewById(R.id.individual_message_send_layout);
@@ -517,8 +521,8 @@ public class MobiComQuickConversationFragment extends Fragment implements Search
     @Override
     public void onResume() {
         //Assigning to avoid notification in case if quick conversation fragment is opened....
-        toolbar.setTitle(getResources().getString(R.string.chats));
-        toolbar.setSubtitle("");
+       /* toolbar.setTitle(getResources().getString(R.string.chats));
+        toolbar.setSubtitle("");*/
         BroadcastService.selectMobiComKitAll();
         super.onResume();
         if (recyclerView != null) {

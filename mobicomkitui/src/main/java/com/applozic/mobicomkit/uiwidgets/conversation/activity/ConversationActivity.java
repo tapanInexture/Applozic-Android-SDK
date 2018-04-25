@@ -338,8 +338,8 @@ public class ConversationActivity extends AppCompatActivity implements MessageCo
             getWindow().setBackgroundDrawableResource(resourceId);
         }
         setContentView(R.layout.quickconversion_activity);
-        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
-        setSupportActionBar(myToolbar);
+      /*  Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);*/
         baseContactService = new AppContactService(this);
         conversationUIService = new ConversationUIService(this);
         mobiComMessageService = new MobiComMessageService(this, MessageIntentService.class);
@@ -356,13 +356,13 @@ public class ConversationActivity extends AppCompatActivity implements MessageCo
         if (Utils.hasMarshmallow()) {
             applozicPermission.checkRuntimePermissionForStorage();
         }
-        mActionBar = getSupportActionBar();
-        if (!TextUtils.isEmpty(alCustomizationSettings.getThemeColorPrimary()) && !TextUtils.isEmpty(alCustomizationSettings.getThemeColorPrimaryDark())) {
-            mActionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor(alCustomizationSettings.getThemeColorPrimary())));
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                getWindow().setStatusBarColor(Color.parseColor(alCustomizationSettings.getThemeColorPrimaryDark()));
-            }
-        }
+//        mActionBar = getSupportActionBar();
+//        if (!TextUtils.isEmpty(alCustomizationSettings.getThemeColorPrimary()) && !TextUtils.isEmpty(alCustomizationSettings.getThemeColorPrimaryDark())) {
+//            mActionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor(alCustomizationSettings.getThemeColorPrimary())));
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//                getWindow().setStatusBarColor(Color.parseColor(alCustomizationSettings.getThemeColorPrimaryDark()));
+//            }
+//        }
         inviteMessage = Utils.getMetaDataValue(getApplicationContext(), SHARE_TEXT);
         retry = 0;
         if (getIntent() != null) {
@@ -403,9 +403,9 @@ public class ConversationActivity extends AppCompatActivity implements MessageCo
         mobiComKitBroadcastReceiver = new MobiComKitBroadcastReceiver(this);
         InstructionUtil.showInfo(this, R.string.info_message_sync, BroadcastService.INTENT_ACTIONS.INSTRUCTION.toString());
 
-        mActionBar.setTitle(R.string.conversations);
-        mActionBar.setDisplayHomeAsUpEnabled(true);
-        mActionBar.setHomeButtonEnabled(true);
+//        mActionBar.setTitle(R.string.conversations);
+//        mActionBar.setDisplayHomeAsUpEnabled(true);
+//        mActionBar.setHomeButtonEnabled(true);
 
         googleApiClient = new GoogleApiClient.Builder(getApplicationContext())
                 .addConnectionCallbacks(this)
@@ -477,7 +477,7 @@ public class ConversationActivity extends AppCompatActivity implements MessageCo
     }
 
     private void showActionBar() {
-        mActionBar.setDisplayShowTitleEnabled(true);
+        //mActionBar.setDisplayShowTitleEnabled(true);
     }
 
     @SuppressLint("NewApi")
