@@ -18,7 +18,9 @@
  -->
 
     <!--Toolbar main is declared in main application package-->
-    <include layout="@layout/toolbar_main_applozic" />
+    <include
+        android:id="@+id/toolbarConversation"
+        layout="@layout/toolbar_main_applozic" />
 
     <!-- <LinearLayout
          android:layout_width="match_parent"

@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.os.Process;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.Toolbar;
+import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -17,7 +17,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,9 +33,6 @@ import com.applozic.mobicomkit.contact.AppContactService;
 import com.applozic.mobicomkit.contact.BaseContactService;
 import com.applozic.mobicomkit.uiwidgets.AlCustomizationSettings;
 import com.applozic.mobicomkit.uiwidgets.ApplozicSetting;
-
-import android.support.v7.widget.RecyclerView;
-
 import com.applozic.mobicomkit.uiwidgets.R;
 import com.applozic.mobicomkit.uiwidgets.conversation.AlLinearLayoutManager;
 import com.applozic.mobicomkit.uiwidgets.conversation.ConversationUIService;
@@ -56,6 +53,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+;
 
 /**
  * Created by devashish on 10/2/15.
@@ -128,6 +127,7 @@ public class MobiComQuickConversationFragment extends Fragment implements Search
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View list = inflater.inflate(R.layout.mobicom_message_list, container, false);
+
 
         recyclerView = (RecyclerView) list.findViewById(R.id.messageList);
         recyclerView.setBackgroundColor(getResources().getColor(R.color.conversation_list_all_background));
@@ -235,9 +235,9 @@ public class MobiComQuickConversationFragment extends Fragment implements Search
             return;
         }
 
-        if(ApplozicClient.getInstance(getActivity()).isSubGroupEnabled() && MobiComUserPreference.getInstance(getActivity()).getParentGroupKey() != null ){
-            Channel  channel = ChannelService.getInstance(getActivity()).getChannelByChannelKey(message.getGroupId());
-            if(channel != null && channel.getParentKey() != null && !MobiComUserPreference.getInstance(getActivity()).getParentGroupKey().equals(channel.getParentKey())){
+        if (ApplozicClient.getInstance(getActivity()).isSubGroupEnabled() && MobiComUserPreference.getInstance(getActivity()).getParentGroupKey() != null) {
+            Channel channel = ChannelService.getInstance(getActivity()).getChannelByChannelKey(message.getGroupId());
+            if (channel != null && channel.getParentKey() != null && !MobiComUserPreference.getInstance(getActivity()).getParentGroupKey().equals(channel.getParentKey())) {
                 return;
             }
         }

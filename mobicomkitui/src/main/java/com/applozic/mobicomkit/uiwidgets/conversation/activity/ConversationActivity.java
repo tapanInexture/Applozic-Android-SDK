@@ -170,6 +170,7 @@ public class ConversationActivity extends AppCompatActivity implements MessageCo
     private String searchTerm;
     private SearchListFragment searchListFragment;
     ContactsChangeObserver observer;
+    private LinearLayout llToolbar;
 
     public ConversationActivity() {
 
@@ -293,6 +294,16 @@ public class ConversationActivity extends AppCompatActivity implements MessageCo
         super.onSaveInstanceState(savedInstanceState);
     }
 
+    //Added by TAPAN for toolbar visibility on both fragments
+    void toggleToolbarVisible() {
+        if (llToolbar.getVisibility() == View.VISIBLE) {
+            llToolbar.setVisibility(View.GONE);
+        } else {
+            llToolbar.setVisibility(View.VISIBLE);
+        }
+    }
+
+
     @Override
     public boolean onSupportNavigateUp() {
         if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
@@ -337,7 +348,10 @@ public class ConversationActivity extends AppCompatActivity implements MessageCo
             getWindow().setBackgroundDrawableResource(resourceId);
         }
         setContentView(R.layout.quickconversion_activity);
-      /*  Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+
+        llToolbar = findViewById(R.id.toolbarConversation);
+
+        /*  Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);*/
         baseContactService = new AppContactService(this);
         conversationUIService = new ConversationUIService(this);
@@ -783,6 +797,8 @@ public class ConversationActivity extends AppCompatActivity implements MessageCo
 
     @Override
     public void onQuickConversationFragmentItemClick(View view, Contact contact, Channel channel, Integer conversationId, String searchString) {
+
+        toggleToolbarVisible();
         conversation = ConversationFragment.newInstance(contact, channel, conversationId, searchString);
         addFragment(this, conversation, ConversationUIService.CONVERSATION_FRAGMENT);
         this.channel = channel;
@@ -815,12 +831,17 @@ public class ConversationActivity extends AppCompatActivity implements MessageCo
             this.finish();
             return;
         }
+
         Boolean takeOrder = getIntent().getBooleanExtra(TAKE_ORDER, false);
         ConversationFragment conversationFragment = (ConversationFragment) getSupportFragmentManager().findFragmentByTag(ConversationUIService.CONVERSATION_FRAGMENT);
         if (conversationFragment != null && conversationFragment.isVisible() && (conversationFragment.multimediaPopupGrid.getVisibility() == View.VISIBLE)) {
             conversationFragment.hideMultimediaOptionGrid();
             return;
         }
+
+        //toggle visibility here
+        toggleToolbarVisible();
+
         if (takeOrder) {
             Intent upIntent = NavUtils.getParentActivityIntent(this);
             if (upIntent != null && isTaskRoot()) {
