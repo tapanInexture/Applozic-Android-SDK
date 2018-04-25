@@ -11,7 +11,6 @@ import android.content.IntentSender;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.location.Location;
 import android.location.LocationManager;
 import android.net.ConnectivityManager;
@@ -37,13 +36,13 @@ import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
-import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -449,6 +448,21 @@ public class ConversationActivity extends AppCompatActivity implements MessageCo
             getApplicationContext().getContentResolver().registerContentObserver(
                     ContactsContract.Contacts.CONTENT_URI, true, observer);
         }
+
+
+        setClickForToolbar();
+    }
+
+
+    private void setClickForToolbar() {
+        //click of back arrow
+        ImageView ivBackArrow = findViewById(R.id.image_menu);
+        ivBackArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     @Override
