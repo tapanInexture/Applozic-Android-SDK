@@ -6,7 +6,7 @@
         <item name="android:actionBarStyle">@style/ApplozicActionBar</item>
         <item name="actionBarStyle">@style/ApplozicActionBar</item>
         <!-- Set AppCompat’s color theming attrs -->
-        <item name="colorPrimary">@color/mobitexter_main_color</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/primary_dark_color</item>
         <item name="colorAccent">@color/holo_blue</item>
 
@@ -20,7 +20,7 @@
     use android:windowNoTitle as false-->
     <style name="ApplozicTheme" parent="Theme.AppCompat.Light.NoActionBar">
 
-        <item name="colorPrimary">@color/applozic_theme_color_primary</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
         <!-- colorPrimaryDark is used for the status bar -->
         <item name="colorPrimaryDark">@color/applozic_theme_color_primary_dark</item>
         <!-- colorAccent is used as the default value for colorControlActivated which is used to tint widgets -->
