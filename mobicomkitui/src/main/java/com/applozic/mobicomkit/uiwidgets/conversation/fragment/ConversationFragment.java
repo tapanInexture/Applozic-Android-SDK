@@ -31,6 +31,10 @@ import java.util.List;
 import java.util.Map;
 
 
+/*
+* NOTE: THIS IS PARTICULAR USER CHAT, NOT THE LIST
+* */
+
 public class ConversationFragment extends MobiComConversationFragment implements SearchListFragment {
 
     public static final int ATTCHMENT_OPTIONS = 6;

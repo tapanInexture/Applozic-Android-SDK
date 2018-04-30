@@ -60,6 +60,13 @@ import java.util.Map;
 /**
  * Created by devashish on 10/2/15.
  */
+
+
+/*
+* NOTE: THIS IS LIST OF USERS..FRAGMENT
+* */
+
+
 public class MobiComQuickConversationFragment extends Fragment implements SearchListFragment {
 
     public static final String QUICK_CONVERSATION_EVENT = "quick_conversation";
