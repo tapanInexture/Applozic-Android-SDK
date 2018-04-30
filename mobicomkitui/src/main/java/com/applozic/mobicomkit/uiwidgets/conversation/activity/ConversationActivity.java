@@ -482,7 +482,6 @@ public class ConversationActivity extends AppCompatActivity implements MessageCo
         });
 
         FrameLayout frame_user = findViewById(R.id.frame_user);
-        //((ImageView) frame_user.getChildAt(0)).setImageResource(R.drawable.ic_add_round);
         frame_user.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
