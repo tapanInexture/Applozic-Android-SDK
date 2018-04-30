@@ -170,10 +170,18 @@ public class ConversationActivity extends AppCompatActivity implements MessageCo
     private String searchTerm;
     private SearchListFragment searchListFragment;
     ContactsChangeObserver observer;
-    private LinearLayout llToolbar;
+    private static LinearLayout llToolbar;
 
     public ConversationActivity() {
 
+    }
+
+    public static void showToolbar() {
+        llToolbar.setVisibility(View.VISIBLE);
+    }
+
+    public static void hideToolbar() {
+        llToolbar.setVisibility(View.GONE);
     }
 
     public static void addFragment(FragmentActivity fragmentActivity, Fragment fragmentToAdd, String fragmentTag) {
@@ -292,15 +300,6 @@ public class ConversationActivity extends AppCompatActivity implements MessageCo
         }
 
         super.onSaveInstanceState(savedInstanceState);
-    }
-
-    //Added by TAPAN for toolbar visibility on both fragments
-    void toggleToolbarVisible() {
-        if (llToolbar.getVisibility() == View.VISIBLE) {
-            llToolbar.setVisibility(View.GONE);
-        } else {
-            llToolbar.setVisibility(View.VISIBLE);
-        }
     }
 
 
@@ -798,7 +797,6 @@ public class ConversationActivity extends AppCompatActivity implements MessageCo
     @Override
     public void onQuickConversationFragmentItemClick(View view, Contact contact, Channel channel, Integer conversationId, String searchString) {
 
-        toggleToolbarVisible();
         conversation = ConversationFragment.newInstance(contact, channel, conversationId, searchString);
         addFragment(this, conversation, ConversationUIService.CONVERSATION_FRAGMENT);
         this.channel = channel;
@@ -839,8 +837,8 @@ public class ConversationActivity extends AppCompatActivity implements MessageCo
             return;
         }
 
-        //toggle visibility here
-        toggleToolbarVisible();
+        //show the toolbar here
+        showToolbar();
 
         if (takeOrder) {
             Intent upIntent = NavUtils.getParentActivityIntent(this);
