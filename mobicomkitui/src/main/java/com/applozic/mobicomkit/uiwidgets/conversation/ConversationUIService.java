@@ -44,7 +44,6 @@ import com.applozic.mobicomkit.uiwidgets.ApplozicSetting;
 import com.applozic.mobicomkit.uiwidgets.R;
 import com.applozic.mobicomkit.uiwidgets.async.ApplozicChannelDeleteTask;
 import com.applozic.mobicomkit.uiwidgets.async.ApplozicChannelLeaveMember;
-import com.applozic.mobicomkit.uiwidgets.conversation.activity.ChannelInfoActivity;
 import com.applozic.mobicomkit.uiwidgets.conversation.activity.ConversationActivity;
 import com.applozic.mobicomkit.uiwidgets.conversation.activity.MobiComAttachmentSelectorActivity;
 import com.applozic.mobicomkit.uiwidgets.conversation.activity.MobiComKitActivityInterface;
@@ -844,7 +843,7 @@ public class ConversationUIService {
             if (message.getGroupId() != null) {
                 channel = ChannelService.getInstance(fragmentActivity).getChannelByChannelKey(message.getGroupId());
                 if (channel.getParentKey() != null && channel.getParentKey() != 0) {
-                    BroadcastService.parentGroupKey =  channel.getParentKey();
+                    BroadcastService.parentGroupKey = channel.getParentKey();
                     MobiComUserPreference.getInstance(fragmentActivity).setParentGroupKey(channel.getParentKey());
                 }
             } else {
@@ -917,7 +916,7 @@ public class ConversationUIService {
                     ((MobiComKitActivityInterface) fragmentActivity).retry();
                     Intent intent = new Intent(fragmentActivity, ApplozicMqttIntentService.class);
                     intent.putExtra(ApplozicMqttIntentService.SUBSCRIBE, true);
-                    ApplozicMqttIntentService.enqueueWork(fragmentActivity,intent);
+                    ApplozicMqttIntentService.enqueueWork(fragmentActivity, intent);
 
                 }
             }
