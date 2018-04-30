@@ -11,6 +11,7 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -120,6 +121,14 @@ public class MobiComKitPeopleActivity extends AppCompatActivity implements OnCon
         } else {
             alCustomizationSettings = new AlCustomizationSettings();
         }
+
+        FloatingActionButton fabAddGroups = findViewById(R.id.fabPeopleAddGroup);
+        fabAddGroups.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //here open new group creation intent
+            }
+        });
 
         onContactsInteractionListener = this;
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);

@@ -470,8 +470,10 @@ public class ConversationActivity extends AppCompatActivity implements MessageCo
         setClickForToolbar();
     }
 
+    //Added by TapanHp, for handling Toolbar clicks
     private void handleToolbarClickEvents() {
 
+        //back arrow click
         ImageView image_menu = findViewById(R.id.image_menu);
         image_menu.setImageResource(R.drawable.ic_arrow_back);
         image_menu.setOnClickListener(new View.OnClickListener() {
@@ -481,6 +483,7 @@ public class ConversationActivity extends AppCompatActivity implements MessageCo
             }
         });
 
+        //Contact image click
         FrameLayout frame_user = findViewById(R.id.frame_user);
         frame_user.setOnClickListener(new View.OnClickListener() {
             @Override
