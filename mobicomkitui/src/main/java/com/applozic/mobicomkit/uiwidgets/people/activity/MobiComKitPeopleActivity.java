@@ -11,7 +11,6 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -43,6 +42,7 @@ import com.applozic.mobicomkit.uiwidgets.AlCustomizationSettings;
 import com.applozic.mobicomkit.uiwidgets.ContactsChangeObserver;
 import com.applozic.mobicomkit.uiwidgets.R;
 import com.applozic.mobicomkit.uiwidgets.conversation.ConversationUIService;
+import com.applozic.mobicomkit.uiwidgets.conversation.activity.ChannelCreateActivity;
 import com.applozic.mobicomkit.uiwidgets.conversation.activity.ConversationActivity;
 import com.applozic.mobicomkit.uiwidgets.conversation.activity.MobiComAttachmentSelectorActivity;
 import com.applozic.mobicomkit.uiwidgets.people.channel.ChannelFragment;
@@ -91,6 +91,7 @@ public class MobiComKitPeopleActivity extends AppCompatActivity implements OnCon
     private SearchListFragment searchListFragment;
     private boolean isSearchResultView = false;
     private ContactsChangeObserver observer;
+    private View fabAddGroups;
 
     public static void addFragment(FragmentActivity fragmentActivity, Fragment fragmentToAdd, String fragmentTag) {
         FragmentManager supportFragmentManager = fragmentActivity.getSupportFragmentManager();
@@ -122,11 +123,14 @@ public class MobiComKitPeopleActivity extends AppCompatActivity implements OnCon
             alCustomizationSettings = new AlCustomizationSettings();
         }
 
-        FloatingActionButton fabAddGroups = findViewById(R.id.fabPeopleAddGroup);
+        fabAddGroups = findViewById(R.id.fabPeopleAddGroup);
         fabAddGroups.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //here open new group creation intent
+                Intent intent = new Intent(MobiComKitPeopleActivity.this, ChannelCreateActivity.class);
+                intent.putExtra(ChannelCreateActivity.GROUP_TYPE, Channel.GroupType.PUBLIC.getValue().intValue());
+                startActivity(intent);
             }
         });
 
@@ -427,12 +431,14 @@ public class MobiComKitPeopleActivity extends AppCompatActivity implements OnCon
         viewPager.setCurrentItem(tab.getPosition(), true);
         switch (tab.getPosition()) {
             case 0:
+                fabAddGroups.setVisibility(View.GONE);
                 setSearchListFragment((AppContactFragment) adapter.getItem(0));
                 if (getSearchListFragment() != null) {
                     getSearchListFragment().onQueryTextChange(null);
                 }
                 break;
             case 1:
+                fabAddGroups.setVisibility(View.VISIBLE);
                 setSearchListFragment((ChannelFragment) adapter.getItem(1));
                 if (getSearchListFragment() != null) {
                     getSearchListFragment().onQueryTextChange(null);
