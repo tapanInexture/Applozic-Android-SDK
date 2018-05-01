@@ -172,6 +172,9 @@ public class ConversationActivity extends AppCompatActivity implements MessageCo
     private SearchListFragment searchListFragment;
     ContactsChangeObserver observer;
     private static LinearLayout llToolbar;
+    private static LinearLayout secondaryToolbar;
+    private TextView tvContactName;
+    private TextView tvContactChatState;
 
     public ConversationActivity() {
 
@@ -180,10 +183,21 @@ public class ConversationActivity extends AppCompatActivity implements MessageCo
     //manages toolbar visibility here.. hide show
     public static void showToolbar() {
         llToolbar.setVisibility(View.VISIBLE);
+        hideSecondaryToolbar();
     }
 
     public static void hideToolbar() {
         llToolbar.setVisibility(View.GONE);
+        showSecondaryToolbar();
+    }
+
+    //this is for managing toolbar while chatting
+    public static void showSecondaryToolbar() {
+        secondaryToolbar.setVisibility(View.VISIBLE);
+    }
+
+    public static void hideSecondaryToolbar() {
+        secondaryToolbar.setVisibility(View.GONE);
     }
 
     public static void addFragment(FragmentActivity fragmentActivity, Fragment fragmentToAdd, String fragmentTag) {
@@ -352,7 +366,15 @@ public class ConversationActivity extends AppCompatActivity implements MessageCo
 
         llToolbar = findViewById(R.id.toolbarConversation);
 
+        secondaryToolbar = findViewById(R.id.toolbarSecondaryForChatScreen);
+
+        tvContactName = findViewById(R.id.tvSecondaryToolbarName);
+        tvContactChatState = findViewById(R.id.tvSecondaryToolbarContactStatus);
+
         handleToolbarClickEvents();
+
+        handleSecondaryToolbarClickEvents();
+
 
         /*  Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);*/
@@ -467,7 +489,27 @@ public class ConversationActivity extends AppCompatActivity implements MessageCo
         }
 
 
-        setClickForToolbar();
+//        setClickForToolbar();
+    }
+
+    private void handleSecondaryToolbarClickEvents() {
+        ImageView ivBAck = findViewById(R.id.ivSecondaryToolbarBack);
+        ivBAck.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
+        ImageView ivAudioVideoCall = findViewById(R.id.ivSecondaryToolbarAudioVideoCall);
+        ivAudioVideoCall.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO: 5/1/2018 Here open the intent to audio video activity
+                Toast.makeText(ConversationActivity.this, "call here", Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 
     //Added by TapanHp, for handling Toolbar clicks
@@ -521,16 +563,16 @@ public class ConversationActivity extends AppCompatActivity implements MessageCo
     }
 
 
-    private void setClickForToolbar() {
-        //click of back arrow
-        ImageView ivBackArrow = findViewById(R.id.image_menu);
-        ivBackArrow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-    }
+//    private void setClickForToolbar() {
+//        //click of back arrow
+//        ImageView ivBackArrow = findViewById(R.id.image_menu);
+//        ivBackArrow.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                finish();
+//            }
+//        });
+//    }
 
     @Override
     protected void onNewIntent(Intent intent) {

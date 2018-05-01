@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:applozic="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -278,18 +277,19 @@
 
                     <ImageButton
                         android:id="@+id/attach_button"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
                         android:layout_gravity="bottom|start"
+                        android:layout_marginBottom="5dp"
                         android:background="@color/apploizc_transparent_color"
                         android:gravity="center"
                         android:minHeight="48dp"
-                        android:paddingEnd="20dp"
-                        android:paddingLeft="10dp"
-                        android:paddingRight="20dp"
-                        android:paddingStart="10dp"
-                        android:scaleType="center"
-                        android:src="@drawable/applozic_ic_action_attachment"
+                        android:paddingBottom="8dp"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:paddingTop="8dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/ic_attach_folder_orange"
                         android:visibility="visible" />
 
                     <!--
@@ -418,26 +418,27 @@
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:layout_gravity="bottom|end"
-                    android:layout_margin="10dp"
-                    android:background="@drawable/button_circle"
+                    android:layout_margin="8dp"
+                    android:background="@color/apploizc_transparent_color"
                     android:clickable="true"
                     android:gravity="center"
-                    android:scaleType="center"
-                    android:src="@drawable/mobicom_ic_action_send"
-                    android:visibility="gone" />
-
-                <ImageButton
-                    android:id="@+id/record_button"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_gravity="bottom|end"
-                    android:layout_margin="10dp"
-                    android:background="@drawable/button_circle"
-                    android:clickable="true"
-                    android:gravity="center"
-                    android:scaleType="center"
-                    android:src="@drawable/applozic_mic_pressed"
+                    android:padding="8dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_send_message_orange"
                     android:visibility="visible" />
+
+                <!--<ImageButton-->
+                <!--android:id="@+id/record_button"-->
+                <!--android:layout_width="48dp"-->
+                <!--android:layout_height="48dp"-->
+                <!--android:layout_gravity="bottom|end"-->
+                <!--android:layout_margin="10dp"-->
+                <!--android:background="@drawable/button_circle"-->
+                <!--android:clickable="true"-->
+                <!--android:gravity="center"-->
+                <!--android:scaleType="center"-->
+                <!--android:src="@drawable/applozic_mic_pressed"-->
+                <!--android:visibility="gone" />-->
 
                 <EditText
                     android:id="@+id/error_edit_text_view"

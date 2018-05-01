@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -21,6 +22,78 @@
     <include
         android:id="@+id/toolbarConversation"
         layout="@layout/toolbar_main_applozic" />
+
+    <!--custom header for any user chat screen-->
+    <LinearLayout
+        android:id="@+id/toolbarSecondaryForChatScreen"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:visibility="visible">
+
+        <ImageView
+            android:id="@+id/ivSecondaryToolbarBack"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:padding="10dp"
+            android:paddingBottom="2dp"
+            android:src="@drawable/left_back3x" />
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="5dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tvSecondaryToolbarName"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="end|center_vertical"
+                android:lines="1"
+                android:text="Tapan Parmar"
+                android:textColor="@color/applozic_theme_color_app"
+                android:textSize="22sp"
+                app:autoSizeMaxTextSize="22sp"
+                app:autoSizeMinTextSize="16sp"
+                app:autoSizeTextType="uniform" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tvSecondaryToolbarContactStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:gravity="end"
+                android:lines="1"
+                android:text="@string/is_typing"
+                android:textColor="@color/applozic_theme_color_app"
+                android:textSize="14sp"
+                app:autoSizeMaxTextSize="14sp"
+                app:autoSizeMinTextSize="10sp"
+                app:autoSizeTextType="uniform" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/ivSecondaryToolbarAudioVideoCall"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="3dp"
+            android:layout_marginRight="3dp"
+            android:padding="8dp"
+            android:src="@drawable/ic_call_audio_video" />
+
+
+    </LinearLayout>
 
     <!-- <LinearLayout
          android:layout_width="match_parent"

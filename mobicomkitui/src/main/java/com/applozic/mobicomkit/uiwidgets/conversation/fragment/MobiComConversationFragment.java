@@ -175,7 +175,7 @@ abstract public class MobiComConversationFragment extends Fragment implements Vi
     protected Channel channel;
     protected Integer currentConversationId;
     protected EditText messageEditText;
-    protected ImageButton sendButton, recordButton;
+    protected ImageButton sendButton;//recordButton
     protected ImageButton attachButton;
     protected Spinner sendType;
     protected LinearLayout individualMessageSendLayout, mainEditTextLinearLayout;
@@ -334,12 +334,12 @@ abstract public class MobiComConversationFragment extends Fragment implements Vi
         individualMessageSendLayout = (LinearLayout) list.findViewById(R.id.individual_message_send_layout);
         slideImageView = (ImageView) list.findViewById(R.id.slide_image_view);
         sendButton = (ImageButton) individualMessageSendLayout.findViewById(R.id.conversation_send);
-        recordButton = (ImageButton) individualMessageSendLayout.findViewById(R.id.record_button);
+//        recordButton = (ImageButton) individualMessageSendLayout.findViewById(R.id.record_button);
         mainEditTextLinearLayout = (LinearLayout) list.findViewById(R.id.main_edit_text_linear_layout);
         audioRecordFrameLayout = (FrameLayout) list.findViewById(R.id.audio_record_frame_layout);
         messageTemplateView = (RecyclerView) list.findViewById(R.id.mobicomMessageTemplateView);
         Configuration config = getResources().getConfiguration();
-        recordButtonWeakReference = new WeakReference<ImageButton>(recordButton);
+//        recordButtonWeakReference = new WeakReference<ImageButton>(recordButton);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
             if (config.getLayoutDirection() == View.LAYOUT_DIRECTION_RTL) {
                 sendButton.setScaleX(-1);
@@ -414,14 +414,14 @@ abstract public class MobiComConversationFragment extends Fragment implements Vi
 
         //listView.setLongClickable(true);
 
-        recordButton.setVisibility(alCustomizationSettings.isRecordButton() && (contact != null || channel != null && !Channel.GroupType.OPEN.getValue().equals(channel.getType())) ? View.VISIBLE : View.GONE);
-        sendButton.setVisibility(alCustomizationSettings.isRecordButton() && (contact != null || channel != null && !Channel.GroupType.OPEN.getValue().equals(channel.getType())) ? View.GONE : View.VISIBLE);
+//        recordButton.setVisibility(alCustomizationSettings.isRecordButton() && (contact != null || channel != null && !Channel.GroupType.OPEN.getValue().equals(channel.getType())) ? View.VISIBLE : View.GONE);
+        sendButton.setVisibility(VISIBLE);//alCustomizationSettings.isRecordButton() && (contact != null || channel != null && !Channel.GroupType.OPEN.getValue().equals(channel.getType())) ? View.GONE : View.VISIBLE
 
-        GradientDrawable bgShape = (GradientDrawable) sendButton.getBackground();
-        bgShape.setColor(Color.parseColor(alCustomizationSettings.getSendButtonBackgroundColor().trim()));
+//        GradientDrawable bgShape = (GradientDrawable) sendButton.getBackground();
+//        bgShape.setColor(Color.parseColor(alCustomizationSettings.getSendButtonBackgroundColor().trim()));
 
-        GradientDrawable bgShapeRecordButton = (GradientDrawable) recordButton.getBackground();
-        bgShapeRecordButton.setColor(Color.parseColor(alCustomizationSettings.getSendButtonBackgroundColor().trim()));
+//        GradientDrawable bgShapeRecordButton = (GradientDrawable) recordButton.getBackground();
+//        bgShapeRecordButton.setColor(Color.parseColor(alCustomizationSettings.getSendButtonBackgroundColor().trim()));
 
         attachButton = (ImageButton) individualMessageSendLayout.findViewById(R.id.attach_button);
 
@@ -494,7 +494,7 @@ abstract public class MobiComConversationFragment extends Fragment implements Vi
             }
         };
 
-        recordButton.setOnTouchListener(new View.OnTouchListener() {
+        /*recordButton.setOnTouchListener(new View.OnTouchListener() {
 
 
             @Override
@@ -563,7 +563,7 @@ abstract public class MobiComConversationFragment extends Fragment implements Vi
                 view.onTouchEvent(motionEvent);
                 return true;
             }
-        });
+        });*/
 
         scheduleOption.setOnClickListener(new View.OnClickListener() {
 
@@ -677,7 +677,7 @@ abstract public class MobiComConversationFragment extends Fragment implements Vi
         });
 
 
-        recordButton.setOnClickListener(new View.OnClickListener() {
+        /*recordButton.setOnClickListener(new View.OnClickListener() {
                                             @Override
                                             public void onClick(View view) {
                                                 if (!isToastVisible && !typingStarted) {
@@ -709,7 +709,8 @@ abstract public class MobiComConversationFragment extends Fragment implements Vi
                                                 errorEditTextView.setVisibility(View.VISIBLE);
                                             }
                                         }
-        );
+        )*/
+        ;
 
         sendButton.setOnClickListener(new View.OnClickListener() {
                                           @Override
@@ -868,8 +869,8 @@ abstract public class MobiComConversationFragment extends Fragment implements Vi
     }
 
     public void handleSendAndRecordButtonView(boolean isSendButtonVisible) {
-        sendButton.setVisibility(alCustomizationSettings.isRecordButton() && (contact != null || channel != null && !Channel.GroupType.OPEN.getValue().equals(channel.getType())) ? isSendButtonVisible ? View.VISIBLE : View.GONE : View.VISIBLE);
-        recordButton.setVisibility(alCustomizationSettings.isRecordButton() && (contact != null || channel != null && !Channel.GroupType.OPEN.getValue().equals(channel.getType())) ? isSendButtonVisible ? View.GONE : View.VISIBLE : View.GONE);
+        sendButton.setVisibility(VISIBLE); //alCustomizationSettings.isRecordButton() && (contact != null || channel != null && !Channel.GroupType.OPEN.getValue().equals(channel.getType())) ? isSendButtonVisible ? View.VISIBLE : View.GONE : View.VISIBLE
+//        recordButton.setVisibility(alCustomizationSettings.isRecordButton() && (contact != null || channel != null && !Channel.GroupType.OPEN.getValue().equals(channel.getType())) ? isSendButtonVisible ? View.GONE : View.VISIBLE : View.GONE);
     }
 
     @Override
@@ -938,8 +939,8 @@ abstract public class MobiComConversationFragment extends Fragment implements Vi
             t.start();
             count = 0;
         }
-        recordButton.getParent()
-                .requestDisallowInterceptTouchEvent(true);
+//        recordButton.getParent()
+//                .requestDisallowInterceptTouchEvent(true);
         audioRecordFrameLayout.setVisibility(View.VISIBLE);
         mainEditTextLinearLayout.setVisibility(View.GONE);
         longPress = true;
