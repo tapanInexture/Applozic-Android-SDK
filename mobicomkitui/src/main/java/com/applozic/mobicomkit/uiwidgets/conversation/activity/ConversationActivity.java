@@ -180,26 +180,6 @@ public class ConversationActivity extends AppCompatActivity implements MessageCo
 
     }
 
-    //manages toolbar visibility here.. hide show
-    public static void showToolbar() {
-        llToolbar.setVisibility(View.VISIBLE);
-        hideSecondaryToolbar();
-    }
-
-    public static void hideToolbar() {
-        llToolbar.setVisibility(View.GONE);
-        showSecondaryToolbar();
-    }
-
-    //this is for managing toolbar while chatting
-    public static void showSecondaryToolbar() {
-        secondaryToolbar.setVisibility(View.VISIBLE);
-    }
-
-    public static void hideSecondaryToolbar() {
-        secondaryToolbar.setVisibility(View.GONE);
-    }
-
     public static void addFragment(FragmentActivity fragmentActivity, Fragment fragmentToAdd, String fragmentTag) {
         FragmentManager supportFragmentManager = fragmentActivity.getSupportFragmentManager();
 
@@ -1463,5 +1443,39 @@ public class ConversationActivity extends AppCompatActivity implements MessageCo
             }
         }
     }
+
+    /*
+    * Coded for customization
+    * by TapanHP
+    *
+    * */
+    //manages toolbar visibility here.. hide show
+    public static void showToolbar() {
+        llToolbar.setVisibility(View.VISIBLE);
+        hideSecondaryToolbar();
+    }
+
+    public static void hideToolbar() {
+        llToolbar.setVisibility(View.GONE);
+        showSecondaryToolbar();
+    }
+
+    //this is for managing toolbar while chatting
+    public static void showSecondaryToolbar() {
+        secondaryToolbar.setVisibility(View.VISIBLE);
+    }
+
+    public static void hideSecondaryToolbar() {
+        secondaryToolbar.setVisibility(View.GONE);
+    }
+
+    public void setNameInSecondaryToolbar(String name) {
+        tvContactName.setText(name);
+    }
+
+    public void setUserStateInSecondaryToolbar(String userState) {
+        tvContactChatState.setText(userState);
+    }
+
 
 }

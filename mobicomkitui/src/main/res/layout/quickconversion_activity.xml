@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -60,12 +61,12 @@
                 android:layout_weight="1"
                 android:gravity="end|center_vertical"
                 android:lines="1"
-                android:text="Tapan Parmar"
                 android:textColor="@color/applozic_theme_color_app"
                 android:textSize="22sp"
                 app:autoSizeMaxTextSize="22sp"
                 app:autoSizeMinTextSize="16sp"
-                app:autoSizeTextType="uniform" />
+                app:autoSizeTextType="uniform"
+                tools:text="Tapan Parmar" />
 
             <android.support.v7.widget.AppCompatTextView
                 android:id="@+id/tvSecondaryToolbarContactStatus"
@@ -74,12 +75,12 @@
                 android:ellipsize="end"
                 android:gravity="end"
                 android:lines="1"
-                android:text="@string/is_typing"
                 android:textColor="@color/applozic_theme_color_app"
-                android:textSize="14sp"
-                app:autoSizeMaxTextSize="14sp"
+                android:textSize="12sp"
+                app:autoSizeMaxTextSize="12sp"
                 app:autoSizeMinTextSize="10sp"
-                app:autoSizeTextType="uniform" />
+                app:autoSizeTextType="uniform"
+                tools:text="@string/is_typing" />
 
         </LinearLayout>
 
