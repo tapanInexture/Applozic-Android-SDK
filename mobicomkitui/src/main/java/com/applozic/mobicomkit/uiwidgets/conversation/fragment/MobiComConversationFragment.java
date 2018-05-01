@@ -14,7 +14,6 @@ import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
 import android.location.Location;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -103,6 +102,7 @@ import com.applozic.mobicomkit.uiwidgets.conversation.DeleteConversationAsyncTas
 import com.applozic.mobicomkit.uiwidgets.conversation.MessageCommunicator;
 import com.applozic.mobicomkit.uiwidgets.conversation.MobicomMessageTemplate;
 import com.applozic.mobicomkit.uiwidgets.conversation.activity.ConversationActivity;
+import com.applozic.mobicomkit.uiwidgets.conversation.activity.MobiComAttachmentSelectorActivity;
 import com.applozic.mobicomkit.uiwidgets.conversation.activity.MobiComKitActivityInterface;
 import com.applozic.mobicomkit.uiwidgets.conversation.activity.RecyclerViewPositionHelper;
 import com.applozic.mobicomkit.uiwidgets.conversation.adapter.ApplozicContextSpinnerAdapter;
@@ -147,6 +147,8 @@ import java.util.TimeZone;
 import java.util.Timer;
 
 import static android.view.View.VISIBLE;
+import static com.applozic.mobicomkit.uiwidgets.conversation.fragment.MultimediaOptionFragment.REQUEST_CODE_ATTACH_PHOTO;
+import static com.applozic.mobicomkit.uiwidgets.conversation.fragment.MultimediaOptionFragment.REQUEST_MULTI_ATTCAHMENT;
 import static java.util.Collections.disjoint;
 
 //import com.applozic.mobicomkit.uiwidgets.conversation.adapter.DetailedConversationAdapter.TemplateCallbackListener;
@@ -264,6 +266,7 @@ abstract public class MobiComConversationFragment extends Fragment implements Vi
     MobicomMessageTemplate messageTemplate;
     MobicomMessageTemplateAdapter templateAdapter;
     boolean isAlreadyLoading;
+    private ImageButton pickFromGalleryButton;
 
     public static int dp(float value) {
         return (int) Math.ceil(1 * value);
@@ -424,6 +427,15 @@ abstract public class MobiComConversationFragment extends Fragment implements Vi
 //        bgShapeRecordButton.setColor(Color.parseColor(alCustomizationSettings.getSendButtonBackgroundColor().trim()));
 
         attachButton = (ImageButton) individualMessageSendLayout.findViewById(R.id.attach_button);
+        pickFromGalleryButton = (ImageButton) individualMessageSendLayout.findViewById(R.id.attach_button_gallery_image);
+        pickFromGalleryButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentPick = new Intent(getActivity(), MobiComAttachmentSelectorActivity.class);
+                intentPick.putExtra("ImagePicker", true);
+                getActivity().startActivityForResult(intentPick, REQUEST_CODE_ATTACH_PHOTO);
+            }
+        });
 
         sendType = (Spinner) extendedSendingOptionLayout.findViewById(R.id.sendTypeSpinner);
         messageEditText = (EditText) individualMessageSendLayout.findViewById(R.id.conversation_message);

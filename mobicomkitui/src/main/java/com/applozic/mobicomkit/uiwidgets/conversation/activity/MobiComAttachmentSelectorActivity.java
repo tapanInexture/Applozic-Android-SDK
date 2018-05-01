@@ -29,7 +29,6 @@ import com.applozic.mobicomkit.uiwidgets.attachmentview.AlBitmapUtils;
 import com.applozic.mobicomkit.uiwidgets.conversation.ConversationUIService;
 import com.applozic.mobicomkit.uiwidgets.conversation.adapter.MobiComAttachmentGridViewAdapter;
 import com.applozic.mobicommons.commons.core.utils.Utils;
-import com.applozic.mobicommons.file.FilePathFinder;
 import com.applozic.mobicommons.file.FileUtils;
 import com.applozic.mobicommons.json.GsonUtils;
 
@@ -68,6 +67,7 @@ public class MobiComAttachmentSelectorActivity extends AppCompatActivity {
     private GridView galleryImagesGridView;
     private ArrayList<Uri> attachmentFileList = new ArrayList<Uri>();
     private MobiComAttachmentGridViewAdapter imagesAdapter;
+    private Boolean imagePicker = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +84,7 @@ public class MobiComAttachmentSelectorActivity extends AppCompatActivity {
         userPreferences = MobiComUserPreference.getInstance(this);
         Intent intent = getIntent();
         if (intent.getExtras() != null) {
+            imagePicker = intent.getExtras().getBoolean("ImagePicker");
             userID = intent.getExtras().getString(USER_ID);
             displayName = intent.getExtras().getString(DISPLAY_NAME);
             groupID = intent.getExtras().getInt(GROUP_ID, 0);
@@ -98,6 +99,9 @@ public class MobiComAttachmentSelectorActivity extends AppCompatActivity {
         fileClientService = new FileClientService(this);
         if (imageUri == null) {
             Intent getContentIntent = FileUtils.createGetContentIntent();
+            if (imagePicker) {
+                getContentIntent.setType("image/*");
+            }
             getContentIntent.putExtra(Intent.EXTRA_LOCAL_ONLY, true);
             Intent intentPick = Intent.createChooser(getContentIntent, getString(R.string.select_file));
             startActivityForResult(intentPick, REQUEST_CODE_ATTACH_PHOTO);
