@@ -243,8 +243,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
                 android:layout_marginBottom="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginStart="8dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
                 android:layout_marginTop="8dp"
                 android:layout_weight="2"
                 android:background="@drawable/input"
@@ -273,7 +273,8 @@
                         android:paddingRight="20dp"
                         android:paddingStart="20dp"
                         android:scaleType="center"
-                        android:src="@drawable/mobicom_emoticons_icon" />
+                        android:src="@drawable/mobicom_emoticons_icon"
+                        android:visibility="gone" />
 
                     <ImageButton
                         android:id="@+id/attach_button"
@@ -290,6 +291,23 @@
                         android:paddingTop="8dp"
                         android:scaleType="fitXY"
                         android:src="@drawable/ic_attach_folder_orange"
+                        android:visibility="visible" />
+
+                    <ImageButton
+                        android:id="@+id/attach_button_gallery_image"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="bottom|start"
+                        android:layout_marginBottom="5dp"
+                        android:background="@color/apploizc_transparent_color"
+                        android:gravity="center"
+                        android:minHeight="48dp"
+                        android:paddingBottom="8dp"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:paddingTop="8dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/ic_gallery_orange"
                         android:visibility="visible" />
 
                     <!--
@@ -415,14 +433,14 @@
 
                 <ImageButton
                     android:id="@+id/conversation_send"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:layout_gravity="bottom|end"
-                    android:layout_margin="8dp"
+                    android:layout_marginBottom="8dp"
                     android:background="@color/apploizc_transparent_color"
                     android:clickable="true"
                     android:gravity="center"
-                    android:padding="8dp"
+                    android:padding="5dp"
                     android:scaleType="fitXY"
                     android:src="@drawable/ic_send_message_orange"
                     android:visibility="visible" />
